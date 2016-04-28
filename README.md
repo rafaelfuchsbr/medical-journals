@@ -15,6 +15,6 @@ Main domain objects:<br>
 - topic: oid, title, description<br>
 <br>
 Notes:<br>
-* "journals" folder contains pdfs related to the journals from initial database<br>
-* "data.mv.db" is the database file for the initial data<br>
-* "data.trace.db" is also related to the initial database<br>
+- "journals" folder contains pdfs related to the journals from initial database<br>
+- "data.mv.db" is the database file for the initial data<br>
+- "data.trace.db" is also related to the initial database<br>
