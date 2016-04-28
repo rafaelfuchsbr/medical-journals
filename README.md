@@ -13,3 +13,8 @@ Main domain objects:<br>
 - user: oid, name, email, type, password, created date, topics<br>
 - journal: oid, title, description, author, topic, created date, created by<br>
 - topic: oid, title, description<br>
+<br>
+Notes:<br>
+* "journals" folder contains pdfs related to the journals from initial database<br>
+* "data.mv.db" is the database file for the initial data<br>
+* "data.trace.db" is also related to the initial database<br>
