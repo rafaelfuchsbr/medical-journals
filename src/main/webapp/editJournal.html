@@ -1,0 +1,35 @@
+<h3><b>EDIT JOURNAL</b></h3>
+
+<form name="editJournalForm" ng-submit="saveJournal(journalFile)">
+    <input name="oid" id="name" ng-model="editJournal.oid" hidden>
+    <div class="form-group" ng-class="{ 'has-error' : editJournalForm.title.$invalid && editJournalForm.title.$dirty }">
+        <label for="title">Tiltle</label>
+        <input ng-model="editJournal.title" type="text" class="form-control" name="title" id="title" placeholder="TItle" required>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : editJournalForm.authorname.$invalid && editJournalForm.authorname.$dirty }">
+        <label for="topic">Topic</label>
+        <select class="form-control" name="topic" id="topic" required
+                ng-options="topic.title for topic in topics.items track by topic.oid"
+                ng-model="editJournal.topic"></select>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : editJournalForm.authorname.$invalid && editJournalForm.authorname.$dirty }">
+        <label for="author">Author</label>
+        <select class="form-control" name="author" id="author" required
+                ng-options="author.name for author in authors.items track by author.oid"
+                ng-model="editJournal.author"></select>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : editJournalForm.description.$invalid && editJournalForm.description.$dirty }">
+        <label for="description">Description</label>
+        <textarea ng-model="editJournal.description"  class="form-control" name="description" id="description" placeholder="Description" required>
+        </textarea>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : editJournalForm.oid.value === '' && !editJournalForm.file.$dirty }">
+        <label for="file">File to upload</label>
+        (for existing journals, if file is not selected, current file will be kept)
+        <input type="file" name="file" ngf-select id="file" ng-model="journalFile"/>
+    </div>
+    <button type="submit" class="btn btn-success pull-right">Save</button>
+    <button type="button" ng-click="goto('/manageJournals')" class="btn btn-link pull-right">Cancel</button>
+
+</form>
+

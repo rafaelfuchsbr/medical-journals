@@ -1,0 +1,35 @@
+<h3><b>TOPICS</b></h3>
+<form class="form-horizontal">
+    <div class="row">
+
+        <div class="col-sm-10">
+            <input type="text" ng-model="mainCategorySearch" class="form-control" placeholder="Search categories by title...">
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-info pull-right" type="button" ng-click="doTopicsSearch(1)">Search</button>
+        </div>
+    </div>
+</form>
+
+
+<ul class="list-group">
+    <li ng-repeat="c in pagedTopics.items" class="list-group-item">
+
+        <div class="row">
+            <div class="col-sm-10">
+                <b>{{c.title| limitTo:100}}</b>
+            </div>
+            <div class="col-sm-2">
+                <button ng-show="c.subscribed && loggedUser.loggedIn" type="button" ng-click="unsubscribe(c.oid)" class="btn btn-success btn-xs pull-right">unsubscribe</button>
+                <button ng-hide="c.subscribed || !loggedUser.loggedIn" type="button" ng-click="subscribe(c.oid)" class="btn btn-primary btn-xs pull-right">subscribe</button>
+            </div>
+        </div>
+
+    </li>
+</ul>
+<nav>
+    <ul class="pager">
+        <li class="previous" ng-show="pagedTopics.hasPrevious"><a href="" ng-click="doTopicsSearch(pagedTopics.page-1)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+        <li class="next" ng-show="pagedTopics.hasNext"><a href="" ng-click="doTopicsSearch(pagedTopics.page+1)">Next <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>

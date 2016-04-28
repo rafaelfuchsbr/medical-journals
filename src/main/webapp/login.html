@@ -1,0 +1,27 @@
+<h3><b>LOGIN</b></h3>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title"><b>Enter e-mail and password</b></h3>
+    </div>
+    <div class="panel-body">
+        <form name="loginForm" ng-model="loginForm">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <div class="form-group">
+                <label for="email">E-mail address</label>
+                <input type="email" class="form-control" id="email" ng-model="email" placeholder="E-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" ng-model="password" placeholder="Password"
+                       required>
+            </div>
+            <button ng-click="doLogin(email, password)" class="btn btn-primary pull-right">Login</button>
+            <button type="button" ng-click="goto('/home')" class="btn btn-link pull-right">Cancel</button>
+            <br><br>
+            <div class="alert alert-danger" role="alert" ng-if="showLoginError">
+                {{ loginErrorMessage }}
+            </div>
+        </form>
+    </div>
+</div>

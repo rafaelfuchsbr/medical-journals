@@ -1,0 +1,28 @@
+<h3><b>JOURNALS</b></h3>
+<form class="form-horizontal">
+    <div class="row">
+
+        <div class="col-sm-10">
+            <input type="text" ng-model="mainJournalSearch" class="form-control" placeholder="Search journals by title or description...">
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-info pull-right" type="button" ng-click="doJournalSearch(1)">Search</button>
+        </div>
+    </div>
+</form>
+
+
+<ul class="list-group">
+    <li ng-repeat="j in pagedJournals.items" class="list-group-item">
+        <b>{{j.title}}</b> | <cite>{{j.author.name}} @ {{j.createdDate | date}}</cite><span class="label label-success pull-right">{{j.topic.title}}</span>
+        <br>
+        {{j.description | limitTo:250}}
+    </li>
+</ul>
+<nav>
+    <ul class="pager">
+        <li class="previous" ng-show="pagedJournals.hasPrevious"><a href="" ng-click="doJournalSearch(pagedJournals.page-1)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+        <li class="next" ng-show="pagedJournals.hasNext"><a href="" ng-click="doJournalSearch(pagedJournals.page+1)">Next <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+

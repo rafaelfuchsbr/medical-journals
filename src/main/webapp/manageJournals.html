@@ -1,0 +1,40 @@
+<h3>
+    <b>MY JOURNALS</b>
+    <button type="button" ng-click="newJournal()" class="btn btn-success pull-right">Add new Journal</button>
+</h3>
+<br><br>
+<form class="form-horizontal">
+    <div class="row">
+
+        <div class="col-sm-10">
+            <input type="text" ng-model="myJournalSearch" class="form-control" placeholder="Search journals by title or description...">
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-info pull-right" type="button" ng-click="doMyJournalSearch(1)">Search</button>
+        </div>
+    </div>
+</form>
+
+
+<ul class="list-group">
+
+    <li ng-repeat="j in myPagedJournals.items" class="list-group-item">
+        <div class="row">
+            <div class="col-sm-10">
+                <b>{{j.title}}</b> <span class="label label-success">{{j.topic.title}}</span>
+                <br><cite>by {{j.author.name}}</cite>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" ng-click="editJournal(j.oid)" class="btn btn-primary btn-sm pull-right">edit</button>
+                <button type="button" ng-click="deleteJournal(j.oid)" class="btn btn-link btn-sm pull-right">delete</button>
+            </div>
+        </div>
+    </li>
+</ul>
+<nav>
+    <ul class="pager">
+        <li class="previous" ng-show="myPagedJournals.hasPrevious"><a href="" ng-click="doMyJournalSearch(myPagedJournals.page-1)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+        <li class="next" ng-show="myPagedJournals.hasNext"><a href="" ng-click="doMyJournalSearch(myPagedJournals.page+1)">Next <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+
